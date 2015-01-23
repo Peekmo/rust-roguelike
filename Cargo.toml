@@ -1,0 +1,9 @@
+[package]
+
+name = "roguelike"
+version = "0.0.1"
+authors = ["Peekmo <axel.anceau@gmail.com>"]
+build = "build.rs"
+
+[dependencies.tcod]
+git = "https://github.com/tomassedovic/tcod-rs.git"

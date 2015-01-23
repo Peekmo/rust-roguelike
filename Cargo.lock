@@ -1,0 +1,26 @@
+[root]
+name = "roguelike"
+version = "0.0.1"
+dependencies = [
+ "tcod 0.4.4 (git+https://github.com/tomassedovic/tcod-rs.git)",
+]
+
+[[package]]
+name = "bitflags"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "tcod"
+version = "0.4.4"
+source = "git+https://github.com/tomassedovic/tcod-rs.git#d75314c083208b0ce5adad259f7bc6ee43403036"
+dependencies = [
+ "bitflags 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "tcod-sys 2.0.1 (git+https://github.com/tomassedovic/tcod-rs.git)",
+]
+
+[[package]]
+name = "tcod-sys"
+version = "2.0.1"
+source = "git+https://github.com/tomassedovic/tcod-rs.git#d75314c083208b0ce5adad259f7bc6ee43403036"
+
