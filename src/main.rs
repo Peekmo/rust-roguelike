@@ -1,17 +1,14 @@
 extern crate tcod;
 use tcod::{Console, BackgroundFlag, KeyCode, Key};
 
+mod entities;
+
 static WIDTH: i32 = 80;
 static HEIGHT: i32 = 50;
 
-struct Character {
-    x: i32,
-    y: i32
-}
-
-fn render(console: &mut Console, character: &Character) {
+fn render(console: &mut Console, character: &entities::Character) {
     console.clear();
-    console.put_char(character.x, character.y, '@', BackgroundFlag::Set);
+    console.put_char(character.position.x, character.position.y, '@', BackgroundFlag::Set);
     Console::flush();
 }
 
@@ -19,7 +16,7 @@ fn main() {
     let mut con = Console::init_root(WIDTH, HEIGHT, "Roguelike", false);
     let mut exit = false;
 
-    let mut character = Character{x:40, y:25};
+    let mut character = entities::Character{position: entities::Coordinates{x:40, y:25}, c: '@'};
 
     render(&mut con, &character);
     while !(Console::window_closed() || exit) {
@@ -27,23 +24,23 @@ fn main() {
         match keypress.key {
             Key::Special(KeyCode::Escape) => exit = true,
             Key::Special(KeyCode::Up) => {
-                if character.y > 0 {
-                    character.y -= 1;
+                if character.position.y > 0 {
+                    character.position.y -= 1;
                 }
             },
             Key::Special(KeyCode::Down) => {
-                if character.y < HEIGHT {
-                    character.y += 1;
+                if character.position.y < HEIGHT {
+                    character.position.y += 1;
                 }
             },
             Key::Special(KeyCode::Right) => {
-                if character.x < WIDTH {
-                    character.x += 1;
+                if character.position.x < WIDTH {
+                    character.position.x += 1;
                 }
             },
             Key::Special(KeyCode::Left) => {
-                if character.x > 0 {
-                    character.x -= 1;
+                if character.position.x > 0 {
+                    character.position.x -= 1;
                 }
             },
             _ => {}
